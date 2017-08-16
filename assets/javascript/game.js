@@ -1,4 +1,4 @@
-$(document).ready() {
+$(document).ready(function() {
     var kvothe = {
         hp : 120;
         attackPower : 8;
@@ -26,3 +26,7 @@ $(document).ready() {
     document.on("click")
 
 }
+
+
+
+});
