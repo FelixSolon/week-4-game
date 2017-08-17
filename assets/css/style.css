@@ -11,10 +11,10 @@ h1 {
 	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
-.img-thumbnail {
-	background-color: #0c0;
-	max-width: calc(24%);
-	padding: 1.5%;
+.startingImage {
+    margin: 0;
+    padding: 10px;
+    float: none !important;
 }
 
 #startingImageBar {
@@ -23,4 +23,9 @@ h1 {
 
 .hidden {
 	visibility: hidden;
+}
+
+.imageBlock {
+    background-color: #fff;
+    max-width: 20%;
 }
