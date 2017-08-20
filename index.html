@@ -15,21 +15,28 @@
     </div>
     <div class="row">
 <!--Starting Image Row-->
-        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 imageBlock">
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 imageBlock greenBlock" id = "kvotheBlock">
+            <h3 class="text-center nameText" id="kvotheText"></h3>
             <img src="" class="img-thumbnail startingImage img-fluid text-center" id="kvothe"/>
-            <h3 class="text-center" id="kvotheText"></h3>
+            <h3 class="text-center hpText" id="kvotheHp"></h3>
+            
         </div>
-        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 imageBlock">
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 imageBlock greenBlock" id = "dennaBlock">
+            <h3 class="text-center nameText" id="dennaText"></h3>
             <img src="" class="img-fluid img-thumbnail startingImage " id="denna"/>
-            <h3 class="text-center" id="dennaText"></h3>
+            <h3 class="text-center hpText" id="dennaHp"></h3>
+            
         </div>
-        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 imageBlock">
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 imageBlock greenBlock" id = "haliaxBlock">
+            <h3 class="text-center nameText" id="haliaxText"></h3>
             <img src="" class="img-thumbnail startingImage img-fluid" id="haliax"/>
-            <h3 class="text-center" id="haliaxText"></h3>
+            <h3 class="text-center hpText" id="haliaxHp"></h3>
+            
         </div>
-        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 imageBlock" id = "cinderBlock">
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 imageBlock greenBlock" id = "cinderBlock">
+        <h3 class="text-center nameText" id="cinderText"></h3>
             <img src="" class="img-thumbnail startingImage img-fluid" id="cinder"/>
-            <h3 class="text-center" id="cinderText"></h3>
+            <h3 class="text-center hpText" id="cinderHp"></h3>
         </div>
     </div>
 <!--Your Character -->
@@ -40,7 +47,7 @@
     </div>
 <!-- Chosen Character Picture-->
     <div class="row">
-        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 imageBlock invisible" id="chosenBlock">
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 imageBlock invisible greenBlock" id="chosenBlock">
             <img src="" class="img-thumbnail startingImage img-fluid" id="cinder"/>
             <h3 class="text-center" id="cinderText"></h3>
         </div>
@@ -53,10 +60,14 @@
     </div>
 <!-- Available Enemy Pictures -->
     <div class="row">
-        <div class="col-md-12 col-sm-12 col-xs-12">
-            <img src="../week-4-game/assets/images/Placeholder.jpg" class="img-thumbnail startingImage img-fluid invisible" id="picture4"/>
-            <img src="../week-4-game/assets/images/Placeholder.jpg" class="img-thumbnail startingImage img-fluid hidden" id="picture4"/>
-            <img src="../week-4-game/assets/images/Placeholder.jpg" class="img-thumbnail startingImage img-fluid hidden" id="picture4"/>
+        <div class="col-md-3 col-sm-3 col-xs-3  imageBlock invisible enemyBlock" id="enemy1">
+            <img src="../week-4-game/assets/images/Placeholder.jpg" class="img-thumbnail startingImage img-fluid invisible"/>
+        </div>
+        <div class="col-md-3 col-sm-3 col-xs-3  imageBlock invisible enemyBlock" id="enemy2">
+            <img src="../week-4-game/assets/images/Placeholder.jpg" class="img-thumbnail startingImage img-fluid hidden"/>
+        </div>
+        <div class="col-md-3 col-sm-3 col-xs-3  imageBlock invisible enemyBlock" id="enemy3">
+            <img src="../week-4-game/assets/images/Placeholder.jpg" class="img-thumbnail startingImage img-fluid hidden"/>
         </div>
     </div>
 <!-- Fight Section -->
@@ -68,20 +79,21 @@
 <!-- Fight Button -->
     <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
-            <button class="btn btn-danger">Attack!</button>
+            <button class="btn btn-danger" id = "attackButton">Attack!</button>
         </div>
     </div>
 <!-- Defender -->
     <div class="row">
-        <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="col-md-3 col-sm-3 col-xs-3">
             <h1>Defender</h1>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="col-md-3 col-sm-3 col-xs-3 invisible imageBlock" id="defenderBlock">
             <img src="../week-4-game/assets/images/Placeholder.jpg" class="img-thumbnail startingImage img-fluid invisible" id="picture4"/>
         </div>
     </div>
+</div>
 </div>
 </body>
     <script type="text/javascript" src="../week-4-game/assets/javascript/jquery-3.2.1.js"></script>

@@ -13,8 +13,8 @@ h1 {
 
 .startingImage {
     margin: 0;
-    padding: 10px;
-    float: none !important;
+    padding: 0px;
+    border: none;
 }
 
 #startingImageBar {
@@ -28,4 +28,32 @@ h1 {
 .imageBlock {
     background-color: #fff;
     max-width: 20%;
+    margin: 10px;
+}
+
+.nameText {
+    line-height: 1px;
+}
+
+.hpText {
+    margin-top: 0;
+}
+
+.greenBlock {
+    border: 3px solid green;
+    border-radius: 25%;
+    background-color: green;
+}
+
+.enemyBlock {
+    border: 3px solid red;
+    border-radius: 25%;
+    background-color: red;
+}
+
+#defenderBlock {
+    border: 1px solid white;
+    border-radius: 25%;
+    background-color: black;
+    color: white;
 }
