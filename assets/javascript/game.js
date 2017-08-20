@@ -82,6 +82,7 @@ $(document).ready(function() {
     var attackButton = $("#attackButton");
     console.log(kvothe);
     var initialAttackPower = 0;
+    var defenderHp = 0 
     $(cinderBlock).click(function(){
         $("#chosenBlock").html(cinderHTML);
         $(".greenBlock").addClass("hidden");
@@ -153,6 +154,8 @@ $(document).ready(function() {
                 $("#enemy1").addClass("hidden");
                 pickedAnEnemy = true;
                 defendingEnemy = enemyChoice1;
+                foo = $("#defenderBlock").find(".hpText")
+                foo.attr("id", "defenderHp");
             } else {
             pickedAnEnemy = true;
             console.log(pickedAnEnemy); 
@@ -169,6 +172,8 @@ $(document).ready(function() {
                 pickedAnEnemy = true;
                 console.log(pickedAnEnemy);
                 defendingEnemy = enemyChoice2;
+                foo = $("#defenderBlock").find(".hpText")
+                foo.attr("id", "defenderHp");
         } else {
             pickedAnEnemy = true;
             console.log(pickedAnEnemy); 
@@ -185,6 +190,9 @@ $(document).ready(function() {
                 pickedAnEnemy = true;
                 console.log(pickedAnEnemy);
                 defendingEnemy = enemyChoice3;
+                foo = $("#defenderBlock").find(".hpText")
+                foo.attr("id", "defenderHp");
+                console.log($("#defenderHp").text())
         } else {
             pickedAnEnemy = true;
             console.log(pickedAnEnemy); 
@@ -196,6 +204,7 @@ $(document).ready(function() {
         
         $("#attackButton").click(function(){
             console.log("Hi!")
+            $("#defenderHp").text(defendingEnemy.hp);
             if (pickedAnEnemy === true){
             console.log(pickedAnEnemy);
             characterChoice.attackPower = characterChoice.attackPower + initialAttackPower;
@@ -206,9 +215,10 @@ $(document).ready(function() {
                 pickedAnEnemy = false;
             }
             characterChoice.hp = characterChoice.hp - defendingEnemy.counterattackPower;
-            foo = $("#defenderBlock").find(".hpText").text()
+            
             console.log(foo);
             foo = defendingEnemy.hp;
+            console.log(foo);   
             console.log(characterChoice);
             console.log(defendingEnemy);
         };
