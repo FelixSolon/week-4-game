@@ -109,6 +109,9 @@ $(document).ready(function() {
         $("#chosenBlock").removeClass("invisible")
         $(".enemyBlock").removeClass("invisible");
         characterChoice = haliax;
+        //this is "bar" because I used "foo" first to mess with defender hp
+        bar = $("#chosenBlock").find(".hpText")
+        bar.attr("id", "attackerHp");
         enemyChoice1 = haliax.enemy1;
         enemyChoice2 = haliax.enemy2;
         enemyChoice3 = haliax.enemy3;
@@ -124,6 +127,8 @@ $(document).ready(function() {
         $("#chosenBlock").removeClass("invisible")
         $(".enemyBlock").removeClass("invisible");
         characterChoice = kvothe;
+        bar = $("#chosenBlock").find(".hpText")
+        bar.attr("id", "attackerHp");
         enemyChoice1 = kvothe.enemy1;
         enemyChoice2 = kvothe.enemy2;
         enemyChoice3 = kvothe.enemy3;
@@ -139,10 +144,13 @@ $(document).ready(function() {
         $("#chosenBlock").removeClass("invisible")
         $(".enemyBlock").removeClass("invisible");
         characterChoice = denna;
+        bar = $("#chosenBlock").find(".hpText")
+        bar.attr("id", "attackerHp");
         enemyChoice1 = denna.enemy1;
         enemyChoice2 = denna.enemy2;
         enemyChoice3 = denna.enemy3;
         initialAttackPower = denna.attackPower;
+
     });
     var pickedAnEnemy = false;
         console.log(pickedAnEnemy);
@@ -154,6 +162,7 @@ $(document).ready(function() {
                 $("#enemy1").addClass("hidden");
                 pickedAnEnemy = true;
                 defendingEnemy = enemyChoice1;
+                //look, I'm not sure this bit is necessary, but it's *working*.
                 foo = $("#defenderBlock").find(".hpText")
                 foo.attr("id", "defenderHp");
             } else {
@@ -204,7 +213,6 @@ $(document).ready(function() {
         
         $("#attackButton").click(function(){
             console.log("Hi!")
-            $("#defenderHp").text(defendingEnemy.hp);
             if (pickedAnEnemy === true){
             console.log(pickedAnEnemy);
             characterChoice.attackPower = characterChoice.attackPower + initialAttackPower;
@@ -215,7 +223,8 @@ $(document).ready(function() {
                 pickedAnEnemy = false;
             }
             characterChoice.hp = characterChoice.hp - defendingEnemy.counterattackPower;
-            
+            $("#defenderHp").text(defendingEnemy.hp);
+            $("#attackerHp").text(characterChoice.hp);
             console.log(foo);
             foo = defendingEnemy.hp;
             console.log(foo);   
