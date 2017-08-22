@@ -218,7 +218,12 @@ $(document).ready(function() {
             console.log(pickedAnEnemy);
             characterChoice.attackPower = characterChoice.attackPower + initialAttackPower;
             defendingEnemy.hp = defendingEnemy.hp - characterChoice.attackPower;
-
+            //I'm not totally sure if I'm supposed to let the enemy character counterattack before dying.
+            //If so, and a draw is possible, move this next if-block to below 228, and combine this with the next if statement
+            //so if(defendingEnemy.hp <= 0 && characterChoice.hp <= 0){
+                //alert("It was a draw! But you still died.") //or something like that anyhow
+                //then throw the other two into else if statements rather than straight if statements.
+            //}
             if (defendingEnemy.hp <= 0){
                 defendingEnemy.counterattackPower = 0;
                 $("#defenderBlock").addClass("invisible");
