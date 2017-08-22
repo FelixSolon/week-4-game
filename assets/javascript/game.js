@@ -112,11 +112,11 @@ $(document).ready(function() {
     function blockClick(name){
         $(greenBlock).addClass("hidden");
         $(chosenBlock).removeClass("hidden");
-        $(chosenBlock).removeClass("invisible")
+        $(chosenBlock).removeClass("invisible");
         $(enemy.Block).removeClass("invisible");
         characterChoice = name;
         //this is "bar" because I used "foo" first to mess with defender hp
-        bar = $(chosenBlock).find(".hpText")
+        bar = $(chosenBlock).find(".hpText");
         bar.attr("id", "attackerHp");
         enemyChoice1 = name.enemy1;
         enemyChoice2 = name.enemy2;
@@ -152,26 +152,27 @@ $(document).ready(function() {
         $(enemy.b).html(haliaxHTML);
         $(enemy.c).html(cinderHTML);
 
+//ToDo:
+//Refactor all of that down below, because it's ugly.
     });
     var pickedAnEnemy = false;
         console.log(pickedAnEnemy);
         $(enemy.a).click(function(){
             if (pickedAnEnemy === false){
                 console.log(pickedAnEnemy);
-                $("#defenderBlock").html($("#enemy1").html());
-                $("#defenderBlock").removeClass("invisible");
+                $(defenderBlock).html($("#enemy1").html());
+                $(defenderBlock).removeClass("invisible");
                 $(enemy.a).addClass("hidden");
                 pickedAnEnemy = true;
                 defendingEnemy = enemyChoice1;
                 //look, I'm not sure this bit is necessary, but it's *working*.
-                foo = $("#defenderBlock").find(".hpText")
+                foo = $(defenderBlock).find(".hpText");
                 foo.attr("id", "defenderHp");
             } else {
             pickedAnEnemy = true;
-            console.log(pickedAnEnemy); 
         }
+        //I'm not totally sure why I need this statement, but the code has issues otherwise, so it's here.
         pickedAnEnemy = true;
-        console.log(pickedAnEnemy);
         });
 
         $(enemy.b).click(function(){
@@ -182,14 +183,12 @@ $(document).ready(function() {
                 pickedAnEnemy = true;
                 console.log(pickedAnEnemy);
                 defendingEnemy = enemyChoice2;
-                foo = $(defenderBlock).find(".hpText")
+                foo = $(defenderBlock).find(".hpText");
                 foo.attr("id", "defenderHp");
         } else {
             pickedAnEnemy = true;
-            console.log(pickedAnEnemy); 
         }
         pickedAnEnemy = true;
-        console.log(pickedAnEnemy);
         });
 
         $(enemy.c).click(function(){
@@ -198,23 +197,19 @@ $(document).ready(function() {
                 $(defenderBlock).removeClass("invisible");
                 $(enemy.c).addClass("hidden");
                 pickedAnEnemy = true;
-                console.log(pickedAnEnemy);
                 defendingEnemy = enemyChoice3;
                 //I've tried to make the following foo = $(defenderBlock) but it seems to break it.
-                foo = $("#defenderBlock").find(".hpText")
+                foo = $(defenderBlock).find(".hpText");
                 foo.attr("id", "defenderHp");
         } else {
             pickedAnEnemy = true;
-            console.log(pickedAnEnemy); 
         }
         pickedAnEnemy = true;
-        console.log(pickedAnEnemy);
         });
 
         
         $(attackButton).click(function(){
             if (pickedAnEnemy === true){
-            console.log(pickedAnEnemy);
             characterChoice.attackPower = characterChoice.attackPower + initialAttackPower;
             defendingEnemy.hp = defendingEnemy.hp - characterChoice.attackPower;
             //I'm not totally sure if I'm supposed to let the enemy character counterattack before dying.
