@@ -27,7 +27,7 @@ $(document).ready(function() {
 
     var cinder = {
         hp : 150
-        , attackPower : 12
+        , attackPower : 7
         , counterattackPower: 20
         , picture : "assets/images/cinder.jpg"
         , name : "Cinder"
@@ -93,6 +93,8 @@ $(document).ready(function() {
         $("#chosenBlock").removeClass("invisible");
         $(".enemyBlock").removeClass("invisible");
         characterChoice = cinder;
+        bar = $("#chosenBlock").find(".hpText")
+        bar.attr("id", "attackerHp");
         enemyChoice1 = cinder.enemy1;
         enemyChoice2 = cinder.enemy2;
         enemyChoice3 = cinder.enemy3;
