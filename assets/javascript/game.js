@@ -154,12 +154,12 @@ $(document).ready(function() {
 
 //ToDo:
 //Refactor all of that down below, because it's ugly.
+//I'm thinking I'd need two arguments, "enemy1" and "enemy.a" for example.
+//But at this point, I'm tired enough that I'm pretty sure I'd break something important
     });
     var pickedAnEnemy = false;
-        console.log(pickedAnEnemy);
         $(enemy.a).click(function(){
             if (pickedAnEnemy === false){
-                console.log(pickedAnEnemy);
                 $(defenderBlock).html($("#enemy1").html());
                 $(defenderBlock).removeClass("invisible");
                 $(enemy.a).addClass("hidden");
