@@ -1,5 +1,3 @@
-//Stop being a lazy ass and make everything an object. It'll be easier in the longyyy
-
 //This is a horribly coded piece of junk that takes forever to load. So it's going to wait until everything is done before trying anything.
 $(document).ready(function() {
     //Threw all the characters into objects, because it's slightly less ugly than a zillion variables named kvotheHp, kvotheAttackPower, etc.
