@@ -1,13 +1,15 @@
 //Stop being a lazy ass and make everything an object. It'll be easier in the longyyy
 
+//This is a horribly coded piece of junk that takes forever to load. So it's going to wait until everything is done before trying anything.
 $(document).ready(function() {
+    //Threw all the characters into objects, because it's slightly less ugly than a zillion variables named kvotheHp, kvotheAttackPower, etc.
     var kvothe = {
         hp : 120
         , attackPower : 8
         , counterattackPower : 15
         , picture : "assets/images/kvothe.jpg"
         , name : "Kvothe"
-    }
+    };
     
     var denna = {
         hp : 125
@@ -15,7 +17,7 @@ $(document).ready(function() {
         , counterattackPower : 5
         , picture : "assets/images/denna.jpg"
         , name : "Denna"
-    }
+    };
 
     var haliax = {
         hp : 180
@@ -23,7 +25,7 @@ $(document).ready(function() {
         , counterattackPower : 25
         , picture : "assets/images/haliax.jpeg"
         , name : "Haliax"
-    }
+    };
 
     var cinder = {
         hp : 150
@@ -31,8 +33,9 @@ $(document).ready(function() {
         , counterattackPower: 20
         , picture : "assets/images/cinder.jpg"
         , name : "Cinder"
-    }
+    };
 
+//declared everyone to hate each other, now that they all exist to know what they hate.
     kvothe.enemy1 = denna;
     kvothe.enemy2 = haliax;
     kvothe.enemy3 = cinder;
@@ -45,28 +48,36 @@ $(document).ready(function() {
     cinder.enemy1 = kvothe;
     cinder.enemy2 = denna;
     cinder.enemy3 = haliax;
+    //declare your variables, kids, even if they're empty.
     var defendingEnemy;
 
+    //because supposedly this is faster than telling everything to find the ID every time the code runs, everything gets a variable!
     var kvotheId = $("#kvothe");
     var dennaId = $("#denna");
     var haliaxId = $("#haliax");
     var cinderId = $("#cinder");
+    //I'm loading the pictures from javaScript at the start rather than throwing them in the HTML mostly just to prove that I can do it.
+    //But let's pretend I did it because it makes it easier to modify the characters later if I want to change something
     $(kvotheId).attr("src", kvothe.picture);
     $(dennaId).attr("src", denna.picture);
     $(haliaxId).attr("src", haliax.picture);
     $(cinderId).attr("src", cinder.picture);
+    //Yaaaay saving processor cycles/bandwidth!
     var kvotheTextId = $("#kvotheText");
     var dennaTextId = $("#dennaText");
     var cinderTextId = $("#cinderText");
     var haliaxTextId = $("#haliaxText");
+    //Again, mostly just because I can.
     $(kvotheTextId).text(kvothe.name);
     $(dennaTextId).text(denna.name);
     $(cinderTextId).text(cinder.name);
     $(haliaxTextId).text(haliax.name);
+    //I'm running out of clever things to say.
     var kvotheHpId = $("#kvotheHp");
     var dennaHpId = $("#dennaHp");
     var haliaxHpId = $("#haliaxHp");
     var cinderHpId = $("#cinderHp");
+    //comment to come later.
     $(kvotheHpId).text(kvothe.hp);
     $(dennaHpId).text(denna.hp);
     $(cinderHpId).text(cinder.hp);
@@ -75,6 +86,7 @@ $(document).ready(function() {
     var kvotheBlock = $("#kvotheBlock")
     var dennaBlock = $("#dennaBlock")
     var haliaxBlock = $("#haliaxBlock")
+    //I thought this was at least kinda clever.
     var cinderHTML = $(cinderBlock).html();
     var haliaxHTML = $(haliaxBlock).html();
     var kvotheHTML = $(kvotheBlock).html();
@@ -82,86 +94,75 @@ $(document).ready(function() {
     var attackButton = $("#attackButton");
     console.log(kvothe);
     var initialAttackPower = 0;
-    var defenderHp = 0 
-    $(cinderBlock).click(function(){
-        $("#chosenBlock").html(cinderHTML);
-        $(".greenBlock").addClass("hidden");
-        $("#chosenBlock").removeClass("hidden");
-        $("#enemy1").html(kvotheHTML);
-        $("#enemy2").html(dennaHTML);
-        $("#enemy3").html(haliaxHTML);
-        $("#chosenBlock").removeClass("invisible");
-        $(".enemyBlock").removeClass("invisible");
-        characterChoice = cinder;
-        bar = $("#chosenBlock").find(".hpText")
+    var defenderHp = 0 ;
+    //reducing jQuery...queries, I guess. Not sure of the technical term.
+    var chosenBlock = $("#chosenBlock");
+    var greenBlock = $(".greenBlock");
+    var enemy = {
+        a : $("#enemy1")
+        , b : $("#enemy2")
+        , c : $("#enemy3")
+        , Block : $(".enemyBlock")
+    };
+    var defenderBlock = $("#defenderBlock");
+    var defenderHp = $("#defenderHp");
+    var attackerHp = $("#attackerHp");
+    //If you look back through the github, this used to be a block of code in each of the following functions.
+    //I still need to refactor the various nameHTML things
+    //But it seems like that would be painful
+    //So I haven't yet.
+    function blockClick(name){
+        $(greenBlock).addClass("hidden");
+        $(chosenBlock).removeClass("hidden");
+        $(chosenBlock).removeClass("invisible")
+        $(enemy.Block).removeClass("invisible");
+        characterChoice = name;
+        //this is "bar" because I used "foo" first to mess with defender hp
+        bar = $(chosenBlock).find(".hpText")
         bar.attr("id", "attackerHp");
-        enemyChoice1 = cinder.enemy1;
-        enemyChoice2 = cinder.enemy2;
-        enemyChoice3 = cinder.enemy3;
-        initialAttackPower = cinder.attackPower;
+        enemyChoice1 = name.enemy1;
+        enemyChoice2 = name.enemy2;
+        enemyChoice3 = name.enemy3;
+        initialAttackPower = name.attackPower;
+    }
+    $(cinderBlock).click(function(){
+        $(chosenBlock).html(cinderHTML);
+        blockClick(cinder);
+        $(enemy.a).html(kvotheHTML);
+        $(enemy.b).html(dennaHTML);
+        $(enemy.c).html(haliaxHTML);
 
     });
     $(haliaxBlock).click(function(){
-        $("#chosenBlock").html(haliaxHTML);
-        $(".greenBlock").addClass("hidden");
-        $("#chosenBlock").removeClass("hidden");
-        $("#enemy1").html(kvotheHTML);
-        $("#enemy2").html(dennaHTML);
-        $("#enemy3").html(cinderHTML);
-        $("#chosenBlock").removeClass("invisible")
-        $(".enemyBlock").removeClass("invisible");
-        characterChoice = haliax;
-        //this is "bar" because I used "foo" first to mess with defender hp
-        bar = $("#chosenBlock").find(".hpText")
-        bar.attr("id", "attackerHp");
-        enemyChoice1 = haliax.enemy1;
-        enemyChoice2 = haliax.enemy2;
-        enemyChoice3 = haliax.enemy3;
-        initialAttackPower = haliax.attackPower;
+        $(chosenBlock).html(haliaxHTML);
+        blockClick(haliax);
+        $(enemy.a).html(kvotheHTML);
+        $(enemy.b).html(dennaHTML);
+        $(enemy.c).html(cinderHTML);
     });
     $(kvotheBlock).click(function(){
-        $("#chosenBlock").html(kvotheHTML);
-        $(".greenBlock").addClass("hidden");
-        $("#chosenBlock").removeClass("hidden");
-        $("#enemy1").html(dennaHTML);
-        $("#enemy2").html(haliaxHTML);
-        $("#enemy3").html(cinderHTML);
-        $("#chosenBlock").removeClass("invisible")
-        $(".enemyBlock").removeClass("invisible");
-        characterChoice = kvothe;
-        bar = $("#chosenBlock").find(".hpText")
-        bar.attr("id", "attackerHp");
-        enemyChoice1 = kvothe.enemy1;
-        enemyChoice2 = kvothe.enemy2;
-        enemyChoice3 = kvothe.enemy3;
-        initialAttackPower = kvothe.attackPower;
+        $(chosenBlock).html(kvotheHTML);
+        blockClick(kvothe);
+        $(enemy.a).html(dennaHTML);
+        $(enemy.b).html(haliaxHTML);
+        $(enemy.c).html(cinderHTML);
     });
     $(dennaBlock).click(function(){
-        $("#chosenBlock").html(dennaHTML);
-        $(".greenBlock").addClass("hidden");
-        $("#chosenBlock").removeClass("hidden");
-        $("#enemy1").html(kvotheHTML);
-        $("#enemy2").html(haliaxHTML);
-        $("#enemy3").html(cinderHTML);
-        $("#chosenBlock").removeClass("invisible")
-        $(".enemyBlock").removeClass("invisible");
-        characterChoice = denna;
-        bar = $("#chosenBlock").find(".hpText")
-        bar.attr("id", "attackerHp");
-        enemyChoice1 = denna.enemy1;
-        enemyChoice2 = denna.enemy2;
-        enemyChoice3 = denna.enemy3;
-        initialAttackPower = denna.attackPower;
+        $(chosenBlock).html(dennaHTML);
+        blockClick(denna);
+        $(enemy.a).html(kvotheHTML);
+        $(enemy.b).html(haliaxHTML);
+        $(enemy.c).html(cinderHTML);
 
     });
     var pickedAnEnemy = false;
         console.log(pickedAnEnemy);
-        $("#enemy1").click(function(){
+        $(enemy.a).click(function(){
             if (pickedAnEnemy === false){
                 console.log(pickedAnEnemy);
                 $("#defenderBlock").html($("#enemy1").html());
                 $("#defenderBlock").removeClass("invisible");
-                $("#enemy1").addClass("hidden");
+                $(enemy.a).addClass("hidden");
                 pickedAnEnemy = true;
                 defendingEnemy = enemyChoice1;
                 //look, I'm not sure this bit is necessary, but it's *working*.
@@ -175,15 +176,15 @@ $(document).ready(function() {
         console.log(pickedAnEnemy);
         });
 
-        $("#enemy2").click(function(){
+        $(enemy.b).click(function(){
             if (pickedAnEnemy === false){
-                $("#defenderBlock").html($("#enemy2").html());
-                $("#defenderBlock").removeClass("invisible");
-                $("#enemy2").addClass("hidden");
+                $(defenderBlock).html($("#enemy2").html());
+                $(defenderBlock).removeClass("invisible");
+                $(enemy.b).addClass("hidden");
                 pickedAnEnemy = true;
                 console.log(pickedAnEnemy);
                 defendingEnemy = enemyChoice2;
-                foo = $("#defenderBlock").find(".hpText")
+                foo = $(defenderBlock).find(".hpText")
                 foo.attr("id", "defenderHp");
         } else {
             pickedAnEnemy = true;
@@ -193,17 +194,17 @@ $(document).ready(function() {
         console.log(pickedAnEnemy);
         });
 
-        $("#enemy3").click(function(){
+        $(enemy.c).click(function(){
             if (pickedAnEnemy == false){
-                $("#defenderBlock").html($("#enemy3").html());
-                $("#defenderBlock").removeClass("invisible");
-                $("#enemy3").addClass("hidden");
+                $(defenderBlock).html($("#enemy3").html());
+                $(defenderBlock).removeClass("invisible");
+                $(enemy.c).addClass("hidden");
                 pickedAnEnemy = true;
                 console.log(pickedAnEnemy);
                 defendingEnemy = enemyChoice3;
+                //I've tried to make the following foo = $(defenderBlock) but it seems to break it.
                 foo = $("#defenderBlock").find(".hpText")
                 foo.attr("id", "defenderHp");
-                console.log($("#defenderHp").text())
         } else {
             pickedAnEnemy = true;
             console.log(pickedAnEnemy); 
@@ -213,7 +214,7 @@ $(document).ready(function() {
         });
 
         
-        $("#attackButton").click(function(){
+        $(attackButton).click(function(){
             if (pickedAnEnemy === true){
             console.log(pickedAnEnemy);
             characterChoice.attackPower = characterChoice.attackPower + initialAttackPower;
@@ -226,12 +227,14 @@ $(document).ready(function() {
             //}
             if (defendingEnemy.hp <= 0){
                 defendingEnemy.counterattackPower = 0;
-                $("#defenderBlock").addClass("invisible");
+                $(defenderBlock).addClass("invisible");
                 pickedAnEnemy = false;
             }
             characterChoice.hp = characterChoice.hp - defendingEnemy.counterattackPower;
             if (characterChoice.hp <= 0) {
                 alert("You lose!");
+                //look, this happens once. I don't care enough to refactor this and make "row" into a variable.
+                //With my luck, something screwy would happen.
                 $(".row").addClass("hidden");
             }
             $("#defenderHp").text(defendingEnemy.hp);
