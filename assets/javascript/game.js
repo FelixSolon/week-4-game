@@ -4,14 +4,14 @@ $(document).ready(function() {
     var kvothe = {
         hp : 120
         , attackPower : 8
-        , counterattackPower : 20
+        , counterattackPower : 15
         , picture : "assets/images/kvothe.jpg"
         , name : "Kvothe"
     }
     
     var denna = {
-        hp : 120
-        , attackPower : 10
+        hp : 125
+        , attackPower : 13
         , counterattackPower : 5
         , picture : "assets/images/denna.jpg"
         , name : "Denna"
@@ -19,7 +19,7 @@ $(document).ready(function() {
 
     var haliax = {
         hp : 180
-        , attackPower : 15
+        , attackPower : 4
         , counterattackPower : 25
         , picture : "assets/images/haliax.jpeg"
         , name : "Haliax"
@@ -33,19 +33,19 @@ $(document).ready(function() {
         , name : "Cinder"
     }
 
-    kvothe.enemy1 = denna
-    kvothe.enemy2 = haliax
-    kvothe.enemy3 = cinder
-    denna.enemy1 = kvothe
-    denna.enemy2 = haliax
-    denna.enemy3 = cinder
-    haliax.enemy1 = kvothe
-    haliax.enemy2 = denna
-    haliax.enemy3 = cinder
-    cinder.enemy1 = kvothe
-    cinder.enemy2 = denna
-    cinder.enemy3 = haliax
-    var defendingEnemy
+    kvothe.enemy1 = denna;
+    kvothe.enemy2 = haliax;
+    kvothe.enemy3 = cinder;
+    denna.enemy1 = kvothe;
+    denna.enemy2 = haliax;
+    denna.enemy3 = cinder;
+    haliax.enemy1 = kvothe;
+    haliax.enemy2 = denna;
+    haliax.enemy3 = cinder;
+    cinder.enemy1 = kvothe;
+    cinder.enemy2 = denna;
+    cinder.enemy3 = haliax;
+    var defendingEnemy;
 
     var kvotheId = $("#kvothe");
     var dennaId = $("#denna");
