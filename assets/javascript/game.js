@@ -212,24 +212,24 @@ $(document).ready(function() {
 
         
         $("#attackButton").click(function(){
-            console.log("Hi!")
             if (pickedAnEnemy === true){
             console.log(pickedAnEnemy);
             characterChoice.attackPower = characterChoice.attackPower + initialAttackPower;
             defendingEnemy.hp = defendingEnemy.hp - characterChoice.attackPower;
+
             if (defendingEnemy.hp <= 0){
                 defendingEnemy.counterattackPower = 0;
                 $("#defenderBlock").addClass("invisible");
                 pickedAnEnemy = false;
             }
             characterChoice.hp = characterChoice.hp - defendingEnemy.counterattackPower;
+            if (characterChoice.hp <= 0) {
+                alert("You lose!");
+                $(".row").addClass("hidden");
+            }
             $("#defenderHp").text(defendingEnemy.hp);
             $("#attackerHp").text(characterChoice.hp);
-            console.log(foo);
             foo = defendingEnemy.hp;
-            console.log(foo);   
-            console.log(characterChoice);
-            console.log(defendingEnemy);
         };
     });
 //the end of the $(document).ready
